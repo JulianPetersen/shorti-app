@@ -1,0 +1,39 @@
+
+<ion-content>
+  <div class="contenedor">
+    <div class="header">
+      <img class="logo" src="/assets/logo.png" alt="">
+    
+    </div>
+    <ion-card class="form">
+      <h2 class="fuente titulo">Bienvenidos</h2>
+      <p class="fuente">Crear Usuario</p>
+      <ion-item class="input">
+        <ion-label position="floating"  >Usuario</ion-label>
+        <ion-input placeholder="Usuario" [(ngModel)]="usuario.username"></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-label position="floating"  >Mail</ion-label>
+        <ion-input placeholder="Usuario" [(ngModel)]="usuario.email"></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-label position="floating"  >Constraseña</ion-label>
+        <ion-input placeholder="Usuario" type="password" [(ngModel)]="usuario.password"></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-label position="floating"  >Repetir contraseña</ion-label>
+        <ion-input placeholder="Contraseña" type="password" [(ngModel)]="checkPassword"></ion-input>
+      </ion-item>
+        <ion-button (click)="register()">Registrarse</ion-button>
+    </ion-card>
+
+    <div class="logotiposredes">
+      <img class="logoRedes" src="/assets/google.png" alt="">
+      <img class="logoRedes" src="/assets/instagram.png" alt="">
+      <img class="logoRedes" src="/assets/face.png" alt="">
+    </div> 
+    <div class="recuperarPass">
+      <p class="fuente">¿No recordás tu contraseña?</p>
+      <p class="fuente">Si ya tienes una cuenta<span style="color: #3880ff;" [routerLink]="['/login']" > Logueate</span> </p>
+    </div>   
+  </div>  

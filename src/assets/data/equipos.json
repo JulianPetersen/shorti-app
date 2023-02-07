@@ -1,0 +1,123 @@
+{
+    "data":[ 
+            {
+                "nombre": "Aldosivi",
+                "logo": "/assets/equipos/aldosivi.png"
+            },
+            {
+                "nombre": "Argentinos Juniors",
+                "logo": "/assets/equipos/argentinos.png"
+            },
+            {
+                "nombre": "Arsenal",
+                "logo": "/assets/equipos/arsenal.png"
+            },
+            {
+                "nombre": "Atletico Tucuman",
+                "logo": "/assets/equipos/atleticoTucuman.png"
+            },
+            {
+                "nombre": "Banfield",
+                "logo": "/assets/equipos/banfield.png"
+            },
+            {
+                "nombre": "Barracas Central",
+                "logo": "/assets/equipos/barracasCentral.png"
+            },
+            {
+                "nombre": "Boca Juniors",
+                "logo": "/assets/equipos/boca.png"
+            },
+            {
+                "nombre": "Central Cordoba",
+                "logo": "/assets/equipos/centralCordoba.png"
+            },
+            {
+                "nombre": "Colon",
+                "logo": "/assets/equipos/colon.png"
+            },
+            {
+                "nombre": "Estudiantes de la Plata",
+                "logo": "/assets/equipos/estudiantes.png"
+            },
+            {
+                "nombre": "Aldosivi",
+                "logo": "/assets/equipos/aldosivi.png"
+            },
+            {
+                "nombre": "Defensa y Justicia",
+                "logo": "/assets/equipos/f.png"
+            },
+            {
+                "nombre": "Gimnasia",
+                "logo": "/assets/equipos/gimnacia.png"
+            },
+            {
+                "nombre": "Godoy Cruz",
+                "logo": "/assets/equipos/godoyCruz.png"
+            },
+            {
+                "nombre": "Huracan",
+                "logo": "/assets/equipos/huracan.png"
+            },
+            {
+                "nombre": "Independiente",
+                "logo": "/assets/equipos/independiente.png"
+            },
+            {
+                "nombre": "Lanus",
+                "logo": "/assets/equipos/lanus.png"
+            },
+            {
+                "nombre": "Newels",
+                "logo": "/assets/equipos/newels.png"
+            },
+            {
+                "nombre": "Patronato",
+                "logo": "/assets/equipos/patronato.png"
+            },
+            {
+                "nombre": "Platense",
+                "logo": "/assets/equipos/platense.png"
+            },
+            {
+                "nombre": "Racing",
+                "logo": "/assets/equipos/racing.png"
+            },
+            {
+                "nombre": "River Plate",
+                "logo": "/assets/equipos/river.png"
+            },
+            {
+                "nombre": "Rosario Central",
+                "logo": "/assets/equipos/rosario.png"
+            },
+            {
+                "nombre": "San Lorenzo",
+                "logo": "/assets/equipos/sanLorenzo.png"
+            },
+            {
+                "nombre": "Sarmiento",
+                "logo": "/assets/equipos/sarmiento.png"
+            },
+            {
+                "nombre": "Talleres de cordoba",
+                "logo": "/assets/equipos/talleres.png"
+            },
+            {
+                "nombre": "Tigre",
+                "logo": "/assets/equipos/tigre.png"
+            },
+            {
+                "nombre": "Union",
+                "logo": "/assets/equipos/union.png"
+            },
+            {
+                "nombre": "Velez",
+                "logo": "/assets/equipos/velez.png"
+            }
+    ]
+    
+}
+    
+

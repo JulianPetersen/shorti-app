@@ -1,0 +1,51 @@
+{
+    "data":[ 
+            {
+                "equipo1":{
+                    "nombre": "Aldosivi",
+                    "logo": "/assets/equipos/aldosivi.png"
+                },
+                "equipo2":{
+                    "nombre": "Argentinos Juniors",
+                    "logo": "/assets/equipos/argentinos.png"
+                },
+                "fecha":"Lunes 09/01 21:15"
+            },
+            {
+                "equipo1":{
+                    "nombre": "Arsenal",
+                    "logo": "/assets/equipos/arsenal.png"
+                },
+                "equipo2":{
+                    "nombre": "Atletico Tucuman",
+                    "logo": "/assets/equipos/atleticoTucuman.png"
+                },
+                "fecha":"Lunes 09/01 21:15"
+            },
+            {
+                "equipo1":{
+                    "nombre": "Banfield",
+                    "logo": "/assets/equipos/banfield.png"
+                },
+                "equipo2":{
+                    "nombre": "Barracas central",
+                    "logo": "/assets/equipos/barracasCentral.png"
+                },
+                "fecha":"Lunes 09/01 21:15"
+            },
+            {
+                "equipo1":{
+                    "nombre": "Boca Juniors",
+                    "logo": "/assets/equipos/boca.png"
+                },
+                "equipo2":{
+                    "nombre": "Central Cordoba",
+                    "logo": "/assets/equipos/centralCordoba.png"
+                },
+                "fecha":"Lunes 09/01 21:15"
+            }
+    ]
+    
+}
+    
+

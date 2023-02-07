@@ -1,0 +1,36 @@
+
+<ion-content>
+  <div class="contenedor">
+    <div class="header">
+      <img class="logo" src="/assets/logo.png" alt="">
+    
+    </div>
+    <ion-card class="form">
+      <h2 class="fuente titulo">Bienvenidos</h2>
+      <p class="fuente">Inicie sesión</p>
+      <ion-item class="input">
+        <ion-label position="floating"  >Usuario</ion-label>
+        <ion-input placeholder="Usuario" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-label position="floating"  >Contraseña</ion-label>
+        <ion-input placeholder="Contraseña" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+        <ion-button (click)="login()">Iniciar Sesion</ion-button>
+    </ion-card>
+
+    <div class="logotiposredes">
+      <img class="logoRedes" src="/assets/google.png" alt="">
+      <img class="logoRedes" src="/assets/instagram.png" alt="">
+      <img class="logoRedes" src="/assets/face.png" alt="">
+    </div> 
+    <div class="recuperarPass">
+      <p class="fuente">¿No recordás tu contraseña?</p>
+      <p class="fuente">Si no tienes una cuenta<span style="color: #3880ff;" [routerLink]="['/register']" > Registrate</span> </p>
+    </div>   
+  </div>  
+
+  
+  
+
+</ion-content>

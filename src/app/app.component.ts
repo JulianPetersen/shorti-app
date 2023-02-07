@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { InfoUser } from './models/info-user';
+import { InfouserService } from './services/infouser.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(private infoUser:InfouserService) {}
 }

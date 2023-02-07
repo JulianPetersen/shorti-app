@@ -1,0 +1,61 @@
+ion-header{
+    width: 100%;
+    height: 180px;
+    background-color: rgb(20, 133, 246);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position:unset;
+}
+
+ion-content{
+    ion-card{
+        display: flex;
+        flex-direction: column;
+        .fecha{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            p{
+                margin:2
+            }
+            .puntos{
+                margin-left:60px ;
+            }
+        }
+        .contenedor{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            .equipo{
+                width: 35%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                p{
+                    text-align: center;
+                    margin:5;
+                }
+            }
+            .result{
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                p{
+                    margin:0;
+                    text-align: center;
+                }
+            }
+           
+        }
+         .estado{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                p{
+                    margin:5px;
+                    
+                }
+            }
+    }
+}

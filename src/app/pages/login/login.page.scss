@@ -1,0 +1,77 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header{
+        width: 100%;
+        height: 350px;
+        background-color: rgb(20, 133, 246);
+        
+        display: flex;
+        flex-direction: column;   
+        align-items: center;
+    }
+    .form{
+        width: 90%;
+
+        position: absolute;
+        top: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .titulo{
+            text-align: center;
+            font-weight: bold;
+            margin-bottom:0 ;
+        }
+        p{
+            margin:0%;
+            text-align: center;
+            font-size: 17px;
+        }
+        .input{
+            width: 80%;
+            margin-bottom: 20px;
+            
+        }
+        ion-button{
+            margin-top: 10px;
+            margin-bottom: 20px;
+            --background:  rgb(20, 133, 246);
+
+        }
+        
+    }
+    .logo{
+        width: 100px;
+        position: relative;
+        top:50px
+
+    }
+
+    .logotiposredes{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .logoRedes{
+            position: relative;
+            top:230px;
+            width: 50px;
+            margin: 20px;
+
+        }
+    }
+
+    .recuperarPass{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 700px;
+        p{
+            margin: 0;
+        }
+    }
+}

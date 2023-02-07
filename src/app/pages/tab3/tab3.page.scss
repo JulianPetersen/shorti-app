@@ -1,0 +1,41 @@
+ion-header{
+    width: 100%;
+    height: 180px;
+    background-color: rgb(20, 133, 246);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position:unset;
+}
+
+ion-content{
+    .contenedor{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .ultimoGanador{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            ion-card{
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                p{
+                    margin:5px;
+                    text-align: center;
+                }
+                ion-item{
+                    margin:5px
+                }
+                ion-button{
+                    width: 80%;
+                    margin:10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+ion-header{
+    width: 100%;
+    height: 180px;
+    background-color: rgb(20, 133, 246);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position:unset; 
+    font-family: 'Montserrat', sans-serif;
+    .contenedor{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .infoUsuario{
+            width: 100%;
+            display: flex;
+            margin-top: 15px;
+            .nombre{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                
+                p{
+                    color: white;
+                    margin:0;
+    
+                }
+                ion-avatar{
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 15px;
+                    margin-left: 15px;
+                    ion-icon{
+                        font-size: 30px;
+                        color:white;
+                    }
+                }
+                ion-icon{
+                    color: white;
+              }
+            }
+            .infoPuntos{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p{
+                    color:white;
+                }
+            }
+        }
+
+        .infopozo{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p{
+                color: white;
+                margin:5px
+            }
+        }
+       
+    }
+}

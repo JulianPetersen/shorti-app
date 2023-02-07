@@ -1,0 +1,39 @@
+
+  <ion-header>
+    <app-header ></app-header>
+  </ion-header>
+<ion-content [fullscreen]="true">
+    <ion-card *ngFor="let e of pronosticosByUser">
+        <div class="fecha">
+          <p>{{e.partido.fecha}} {{e.partido.horario}}</p>
+          <p class="puntos">puntos: {{e.puntosObtenidos}}</p>
+        </div>
+        
+        <div class="contenedor">
+          <div class="equipo">
+            <ion-avatar>
+              <img [src]="e.partido.equipo1.imgUrl"/>
+            </ion-avatar>
+            <p>{{e.partido.equipo1.name}}</p>
+          </div>
+          <div class="result">
+            <p>tu pronostico</p>
+            <p> {{e.prediccion.equipo1}} - {{e.prediccion.equipo2}}</p>
+            <p>Resultado</p>
+            <p>{{e.partido.resultado.equipo1}} - {{e.partido.resultado.equipo2}}</p>
+          </div>
+          <div class="equipo">
+            <ion-avatar>
+              <img [src]="e.partido.equipo2.imgUrl"/>
+            </ion-avatar>
+            <p>{{e.partido.equipo2.name}}</p>
+          </div>
+        </div>
+        <div class="estado">
+          <p>estado del partido:  {{e.partido.estado}}</p>
+        </div>
+       
+      </ion-card>
+</ion-content>
+
+

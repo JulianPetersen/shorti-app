@@ -1,0 +1,53 @@
+
+  <ion-header>
+    <app-header ></app-header>
+  </ion-header>
+<ion-content [fullscreen]="true">
+  <div class="content">
+
+    <div class="emptyList" *ngIf="partidosHabilitados.length === 0">
+      <p>No Hay Pronosticos para Realizar</p>
+    </div>
+
+
+    <ion-card *ngFor="let e of partidosHabilitados">
+      
+      <div class="fecha">
+        <p>{{e.fecha}} {{e.horario}}</p>
+      </div>
+      <div class="equipos">
+        <div class="equipo">
+          <div class="datosEquipo">
+            <ion-avatar>
+              <img [src]="e.equipo1.imgUrl"/>
+            </ion-avatar>
+            <p>{{e.equipo1.name}}</p>
+          </div>
+          <div class="buttons">
+            <ion-button (click)="sumarEquipo1(e)">+</ion-button>
+            <p>{{e.resultado.equipo1}}</p>
+            <ion-button (click)="restarEquipo1(e)">-</ion-button>
+          </div>
+        </div>
+        <div class="equipo">
+          <div class="buttons">
+            <ion-button (click)="sumarEquipo2(e)">+</ion-button>
+            <p>{{e.resultado.equipo2}}</p>
+            <ion-button (click)="restarEquipo2(e)">-</ion-button>
+          </div>
+          <div class="datosEquipo">
+            <ion-avatar>
+              <img [src]="e.equipo2.imgUrl"/>
+            </ion-avatar>
+            <p>{{e.equipo2.name}}</p>
+          </div>
+        </div>
+      </div>
+   
+
+        <ion-button (click)="enviarPronostico(e)" fill="clear">Enviar Pronostico</ion-button>
+      
+    </ion-card>
+  </div>
+</ion-content>
+
