@@ -33,19 +33,24 @@ export class LoginPage implements OnInit {
 
 
   login(){
-
+    this.global.showLoading('cargando')
     if(this.checkData()){
       this.auth.login(this.user)
         .subscribe({
           next: ((res:any) => {
             console.log(res)
-            localStorage.setItem('tokenShortiApp',res.token)
+            localStorage.setItem('token',res.token)
             localStorage.setItem('userId', res.userId)
-            localStorage.setItem('puntosObtenidos', res.infouser.puntosObtenidos)
             localStorage.setItem('username', res.username)
-            this.router.navigate(['/home'])
+
+              this.router.navigate(['/home'])
+
+            this.global.dismissLoader();
           }),
-          error:((err) => {console.log(err)})
+          error:((err) => {
+            console.log(err)
+            this.global.dismissLoader();})
+          
         })
         
       

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InfoUser } from './models/info-user';
+import { GlobalService } from './services/global.service';
 import { InfouserService } from './services/infouser.service';
 
 @Component({
@@ -9,5 +10,7 @@ import { InfouserService } from './services/infouser.service';
 })
 export class AppComponent {
 
-  constructor(private infoUser:InfouserService) {}
+  constructor(public global:GlobalService){
+    
+  }
 }

@@ -1,0 +1,19 @@
+<ion-header>
+  <app-header ></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="billetera">
+    <ion-card>  
+      <h2>Tu dinero Obtenido</h2>
+      <p>Tienes disponible para retirar</p>
+      <p>${{dineroUsuario}}</p>
+      <ion-item>
+        <ion-label position="floating">Ingrese la cantidad</ion-label>
+        <ion-input placeholder="Cantidad" [(ngModel)]="dineroRetirar"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="retirarSaldo()">Solicitar Retiro</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

@@ -14,7 +14,7 @@ import { PronosticosService } from 'src/app/services/pronosticos.service';
 export class Tab2Page {
 
   constructor(private pronostico:PronosticosService ,
-              private loader:LoadingController,
+              public loader:LoadingController,
               private global:GlobalService,
               private infouser:InfouserService) {}
 
@@ -23,25 +23,21 @@ export class Tab2Page {
   pronosticosSinChequear:any[]=[]
 
   ngOnInit(){
+    this.global.showLoading('cargando')
     this.getPronosticosByUser();
     this.obtenerPartidosSinChequear()
     this.calcularPuntos();
+    this.global.dismissLoader();
     
   }
-
-
 
   user = localStorage.getItem('userId')
 
   getPronosticosByUser(){
-    this.global.showLoading('cargando')
+ 
     this.pronostico.getPronosticosByUser(this.user)
       .subscribe({
         next:((res:any[]) => {
-          setTimeout(() => {
-            
-            this.loader.dismiss();
-          }, 1500);
           this.pronosticosByUser = res
           console.log(this.pronosticosByUser)
         }),
@@ -55,8 +51,6 @@ export class Tab2Page {
         if(pronostico.puntosObtenidos == null && pronostico.partido.estado === 'Finalizado'){
           this.pronosticosSinChequear.push(pronostico)
   
-          console.log('partidoChequear', this.pronosticosSinChequear)
-         
         }
       }
     }, 2000);
@@ -67,7 +61,6 @@ export class Tab2Page {
     this.pronostico.updatePronosticoByUser(id,pronostico)
       .subscribe({
         next:((res) => {
-          console.log('updated',res)
           this.getPronosticosByUser();
         }),
         error:((err) => {console.log(err)})
@@ -79,23 +72,20 @@ export class Tab2Page {
     this.infouser.updateCreditos(user,body)
       .subscribe({
         next : ((res:any) => {
-          console.log('los mismisimos puntos',res.puntosObtenidos)
-          localStorage.setItem('puntosObtenidos', res.puntosObtenidos)
+          console.log('ActualizacionPuntos',res.puntosObtenidos)
         })
       })
   }
 
   calcularPuntos(){
     setTimeout(() => {
-      console.log('entrando')
-      for(let pronostico of this.pronosticosSinChequear){
 
+      for(let pronostico of this.pronosticosSinChequear){
         let prediccionEquipo1 = pronostico.prediccion.equipo1
         let prediccionEquipo2 = pronostico.prediccion.equipo2
         let resultadoEquipo1 = pronostico.partido.resultado.equipo1
         let resultadoEquipo2 = pronostico.partido.resultado.equipo2
         if(prediccionEquipo1 == resultadoEquipo1 && prediccionEquipo2 == resultadoEquipo2){
-          console.log(pronostico._id)
           let pronosticoUpdated:any = {
             puntosObtenidos : 3
           }
@@ -105,7 +95,7 @@ export class Tab2Page {
           console.log(pronosticoUpdated)
           this.updatePronostico(pronostico._id,pronosticoUpdated)
           this.updateCreditos(this.user, actualizarPuntos)
-          
+          console.log('puntosActualizados')
         }else {
           console.log(pronostico._id)
           let pronosticoUpdated:Pronosticos = {

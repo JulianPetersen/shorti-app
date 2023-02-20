@@ -16,7 +16,6 @@ export class Tab1Page {
 
   constructor(public partidos:PartidosService,
               private pronosticos:PronosticosService,
-              private infoUser:InfouserService,
               public global:GlobalService,
               public loader:LoadingController) {}
 
@@ -30,24 +29,20 @@ export class Tab1Page {
   user = localStorage.getItem('userId');
   
   ngOnInit(){
-
+    
+    this.getPartidosByUser()
     
   }
 
-  ionViewWillEnter(){
-    this.getPartidosByUser()
-  }
+
 
   async getPartidosByUser(){
-    this.global.showLoading('cargando')
+    
     this.partidosHabilitados = []
     console.log(this.user)
     this.partidos.getPartidosByUser(this.user)
       .subscribe((res:any)=> {
-        setTimeout(() => {
-          
-          this.loader.dismiss();
-        }, 1500);
+        
         this.partidosObtained = res
         for(let partido of this.partidosObtained){
           if(partido.estado === "Habilitado"){

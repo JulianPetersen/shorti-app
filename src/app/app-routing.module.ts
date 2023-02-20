@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'tab-billetera',
+    loadChildren: () => import('./pages/tab-billetera/tab-billetera.module').then( m => m.TabBilleteraPageModule)
   }
 ];
 @NgModule({

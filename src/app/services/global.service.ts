@@ -14,7 +14,6 @@ export class GlobalService {
   puntosUser:number;
   
 
-
   async presentAlert(titulo:string, message:string) {
     const alert = await this.alertController.create({
       header: titulo,
@@ -33,5 +32,11 @@ export class GlobalService {
     });
 
     loading.present();
+  }
+
+  async dismissLoader(){
+    setTimeout(() => {
+      this.loadingCtrl.dismiss();
+    }, 3000);
   }
 }

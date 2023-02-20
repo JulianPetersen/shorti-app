@@ -13,16 +13,12 @@ import { PremiosService } from 'src/app/services/premios.service';
 export class HeaderComponent implements OnInit {
   user = localStorage.getItem('userId');
   datosUser:any;
-  userPonits = localStorage.getItem('puntosObtenidos');
   username =localStorage.getItem('username');
   valorPremio:number;
   fechaPremio:string;
   
 
-  constructor(private infoUser:InfouserService,
-              private global:GlobalService, 
-              private loader:LoadingController,
-              private auth:AuthService,
+  constructor(
               private premio:PremiosService) { }
 
   ngOnInit() {

@@ -7,17 +7,26 @@
     <div class="ultimoGanador">
       <ion-card>
         <h5>Ulimo Ganador</h5>
-        <p>BoxMorris</p>
-        <p>Con un pozo de : $10000</p>
+        <p>{{ultimoGanador}}</p>
+
+        <p>Con un pozo de : ${{cantidadUltimoGanador}}</p>
       </ion-card>
       <ion-card>
         <h5>¿Como Participar?</h5>
         <p>Cada Crédito que sumes, vale por una canche en el sorteo, cuantos más créditos uses, más chances tendrás de ganarlo.</p>
+        <p>Tienes: {{puntosUsuarios}} puntos</p>
         <ion-item>
           <ion-label position="floating">Agregar Créditos</ion-label>
           <ion-input placeholder="Ingresar Créditos" type="number" [(ngModel)]="creditos"></ion-input>
         </ion-item>
-        <ion-button >Agregar</ion-button>
+        <ion-button (click)="agregarCreditos()">Agregar</ion-button>
+      </ion-card>
+
+      <ion-card>
+        <h5>sorteo</h5>
+        <p>Actualmente Hay: {{participacionesTotales}} Participaciones</p>
+        <p>Estas Participando con {{cantParticipacionUsuario}} creditos</p>
+        <p *ngIf="cantParticipacionUsuario != 0">Tienes {{porcentajeEnSorteo}}% de probabilidades de ganar</p>
       </ion-card>
     </div>
   </div>
