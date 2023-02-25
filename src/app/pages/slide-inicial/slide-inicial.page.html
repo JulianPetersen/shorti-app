@@ -1,0 +1,31 @@
+<ion-content  *ngIf="slide1">
+  <div class="slides1">
+    <div class="slide1">
+      <h1>Bienvenido a Shorti</h1>
+      <p>Shorti es una App donde podrás predecir resultados de partidos de Fútbol, sumar puntos con cada acierto. Y lo mejor de todo, intercambiar esos puntos por premios en metálico. </p>
+      <ion-button fill="outline" (click)="gotoSlide2()">Siguiente</ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content  *ngIf="slide2">
+  <div class="slides2">
+    <div class="slide2">
+      <h1>Es Muy Fácil</h1>
+      <p>Es muy fácil de usar, en Shorti, apareceran partidos para predecir su resultado, cada vez que aciertes sumaras créditos, los cuales podrás utilizar mas tarde para participar del sorteo de un pozo semanal.</p>
+      <p></p>
+      <ion-button fill="outline" (click)="gotoSlide3()">Siguiente</ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content  *ngIf="slide3">
+  <div class="slides3">
+    <div class="slide3">
+      <h1>Recuerda</h1>
+      <p>Recuerda El pozo que shorti pone a disposición para el sorteo, depende de la cantidad de usuarios que utilicen la App. Cuanto mas usuarios, Mas grande será el pozo. Invita a tus amigos a si tu premio se incrementa más</p>
+      <p></p>
+      <ion-button fill="outline" (click)="gotoHome()">Comenzar</ion-button>
+    </div>
+  </div>
+</ion-content>

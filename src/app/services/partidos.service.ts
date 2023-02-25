@@ -22,6 +22,16 @@ export class PartidosService {
     return this.http.get<Partidos[]>(`${this.global.URL}/partidos`,{headers:headers})
   }
 
+
+  getLastTenPartidos(){
+    let token:any = localStorage.getItem('token')
+    let headers = new HttpHeaders({
+      'x-access-token':token
+    })
+    return this.http.get<Partidos[]>(`${this.global.URL}/partidos/getlastenpartidos`,{headers:headers})
+  }
+
+
   getPartidosByUser(id:any){
     let token:any = localStorage.getItem('token')
     let headers = new HttpHeaders({

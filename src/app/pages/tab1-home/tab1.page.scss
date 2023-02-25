@@ -9,7 +9,6 @@ ion-header{
 ion-content{
     .emptyList{
         width: 100%;
-        height: 500px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -18,6 +17,63 @@ ion-content{
         width: 100%;
         display: flex;
         flex-direction: column;
+        .partidosPronosticar{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .partidosJugados{
+            h5{
+                text-align: center;
+            }
+            .fecha{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                p{
+                    margin:2
+                }
+                .puntos{
+                    margin-left:60px ;
+                }
+            }
+            .contenedor{
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                .equipo{
+                    width: 35%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    p{
+                        text-align: center;
+                        margin:5;
+                    }
+                }
+                .result{
+                    width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    p{
+                        margin:0;
+                        text-align: center;
+                    }
+                }
+               
+            }
+             .estado{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    p{
+                        margin:5px;
+                        
+                    }
+                }
+        }
+    }
     }
     ion-card{
         display: flex;
@@ -63,4 +119,8 @@ ion-content{
             }
         }
     }
-}
+
+    h5{
+        text-align: center;
+        font-weight: bold;
+    }

@@ -1,0 +1,96 @@
+ion-content{
+    .slides1{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-image: url("/assets/fondo1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        .slide1{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1{
+                color:white;
+                font-weight: bold;
+            }
+            p{
+                text-align: center;
+                color:white
+            }
+            ion-button{
+                color:white;
+            }
+        }
+       
+    }
+
+
+    .slides2{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-image: url("/assets/fondo2.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        
+        .slide2{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1{
+                color:white;
+                font-weight: bold;
+            }
+            p{
+                text-align: center;
+                color:white
+            }
+            ion-button{
+                color:white;
+            }
+        }
+       
+    }
+
+    .slides3{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-image: url("/assets/fondo1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        .slide3{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1{
+                color:white;
+                font-weight: bold;
+            }
+            p{
+                text-align: center;
+                color:white
+            }
+            ion-button{
+                color:white;
+            }
+        }
+       
+    }
+}

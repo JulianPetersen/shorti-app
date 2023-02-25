@@ -5,10 +5,11 @@
                 <ion-avatar>
                     <ion-icon name="person-circle-outline"></ion-icon>
                 </ion-avatar>
-                <p>Hola {{username}}</p>
+                <p [routerLink]="['/mi-perfil']">Hola {{username}}</p>
                 <ion-icon name="chevron-forward-outline"></ion-icon> 
             </div>
             <div class="infoPuntos">
+                <p>Tus Créditos: {{puntosObtenidosUser}}</p>
             </div>
         </div>        
         <div class="infopozo">

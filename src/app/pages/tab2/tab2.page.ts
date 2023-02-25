@@ -109,4 +109,12 @@ export class Tab2Page {
     }, 3000);
     
   }
+
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.getPronosticosByUser()
+      event.target.complete();
+    }, 2000);
+  };
+
 }

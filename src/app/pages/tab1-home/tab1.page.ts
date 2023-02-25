@@ -24,25 +24,35 @@ export class Tab1Page {
   partidosHabilitados:any[] = [];
   equipo1Goles:number = 0;
   equipo2Goles:number = 0;
-
+  ultimosPartiodos:any[] = []
+  lastPartidosJugados:any[] = []
   
   user = localStorage.getItem('userId');
   
   ngOnInit(){
-    
     this.getPartidosByUser()
-    
+    this.getPartidos();
+    this.getlastTenPartidos()
   }
 
 
+  getPartidos(){
+    this.partidos.getPartidos()
+      .subscribe({
+        next: ((res) => {
+          console.log(res)
+          this.ultimosPartiodos = res;
+      })
+    })
+  }
 
   async getPartidosByUser(){
-    
+    this.global.showLoading('cargando')
     this.partidosHabilitados = []
     console.log(this.user)
     this.partidos.getPartidosByUser(this.user)
       .subscribe((res:any)=> {
-        
+        this.global.dismissLoader()
         this.partidosObtained = res
         for(let partido of this.partidosObtained){
           if(partido.estado === "Habilitado"){
@@ -92,21 +102,29 @@ export class Tab1Page {
           console.log(err)
         })
       })
+
+      
   }
 
+  
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.getPartidosByUser()
+      event.target.complete();
+    }, 2000);
+  };
 
 
-    // getPartidos(){
-  //   this.partidos.getPartidos()
-  //     .subscribe((res:any)=> {
-  //       this.partidosObtained = res
-  //       for(let partido of this.partidosObtained){
-  //         if(partido.estado === "Habilitado"){
-  //           this.partidosHabilitados.push(partido);    
-  //         }
-  //       }
-  //       console.log(this.partidosHabilitados)
-        
-  //     })
-  // }
+
+
+  getlastTenPartidos(){
+    this.partidos.getLastTenPartidos()
+      .subscribe({
+        next:((res) => {
+          this.lastPartidosJugados = res
+          console.log('last ten', this.lastPartidosJugados)
+        })
+      })
+  }
+
 }

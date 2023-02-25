@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { HeaderComponent } from './header/header.component';
-import { RouterModule } from '@angular/router';
 
+import { SlideInicialPageRoutingModule } from './slide-inicial-routing.module';
 
+import { SlideInicialPage } from './slide-inicial.page';
 
 @NgModule({
-  declarations: [
-    HeaderComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule
-
+    SlideInicialPageRoutingModule
   ],
-  exports:[
-    HeaderComponent
-  ]
+  declarations: [SlideInicialPage]
 })
-export class ComponentsModule { }
+export class SlideInicialPageModule {}

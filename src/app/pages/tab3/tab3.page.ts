@@ -103,7 +103,7 @@ export class Tab3Page {
     this.porcentajeEnSorteo =Math.round(((this.cantParticipacionUsuario * 100)/ this.participacionesTotales)) ;
     console.log('porcentajeParticipacion', this.porcentajeEnSorteo)
   }
-
+  ultimoSorteo:any[] = []
   getUltimoSorteo(){
     this.sorteRealizado.getUltimoSorteo()
       .subscribe({
@@ -112,6 +112,7 @@ export class Tab3Page {
             console.log('no se realizaron sorteos aun')
           }else{
             console.log('cargar sorteo', res)
+            this.ultimoSorteo = res
             this.cantidadUltimoGanador = res[0].cantidad;
             this.ultimoGanador = res[0].ganador.username
           }

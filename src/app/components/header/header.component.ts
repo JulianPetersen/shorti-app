@@ -17,12 +17,15 @@ export class HeaderComponent implements OnInit {
   valorPremio:number;
   fechaPremio:string;
   
+  puntosObtenidosUser:number;
 
   constructor(
-              private premio:PremiosService) { }
+              private premio:PremiosService,
+              private infouser:InfouserService) { }
 
   ngOnInit() {
     this.getPremios()
+    this.getInfouser()
   }
  
 
@@ -37,7 +40,15 @@ export class HeaderComponent implements OnInit {
       })
   }
   
-  
+  getInfouser(){
+    this.infouser.getinfoUserByUserId(this.user)
+      .subscribe({
+        next:((res:any) => {
+          this.puntosObtenidosUser = res[0].puntosObtenidos
+          console.log(this.puntosObtenidosUser)
+        })
+      })
+  }
 }
 
 

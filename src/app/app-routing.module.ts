@@ -24,7 +24,15 @@ const routes: Routes = [
   {
     path: 'tab-billetera',
     loadChildren: () => import('./pages/tab-billetera/tab-billetera.module').then( m => m.TabBilleteraPageModule)
-  }
+  },
+  {
+    path: 'mi-perfil',
+    loadChildren: () => import('./pages/mi-perfil/mi-perfil.module').then( m => m.MiPerfilPageModule)
+  },
+  {
+    path: 'slide-inicial',
+    loadChildren: () => import('./pages/slide-inicial/slide-inicial.module').then( m => m.SlideInicialPageModule)
+  },
 ];
 @NgModule({
   imports: [

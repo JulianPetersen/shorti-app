@@ -8,9 +8,14 @@ import { LoadingController } from '@ionic/angular';
 export class GlobalService {
 
   constructor(private alertController: AlertController,
-              private loadingCtrl: LoadingController) { }
+              private loadingCtrl: LoadingController) { }      
+              
+              
 
-  URL:string = "http://localhost:4000/api"
+
+  // URL:string = "http://localhost:4000/api"
+  //prod
+  URL:string = "https://shorti.store/api"
   puntosUser:number;
   
 

@@ -42,8 +42,14 @@ export class LoginPage implements OnInit {
             localStorage.setItem('token',res.token)
             localStorage.setItem('userId', res.userId)
             localStorage.setItem('username', res.username)
-
+            let slide = localStorage.getItem('slide')
+            console.log('slide', slide)
+            if(slide == null){
+              this.router.navigate(['/slide-inicial'])
+              localStorage.setItem('slide', '1')
+            }else{
               this.router.navigate(['/home'])
+            }
 
             this.global.dismissLoader();
           }),

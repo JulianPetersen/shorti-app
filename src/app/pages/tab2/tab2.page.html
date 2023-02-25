@@ -3,6 +3,11 @@
     <app-header ></app-header>
   </ion-header>
 <ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
     <ion-card *ngFor="let e of pronosticosByUser">
         <div class="fecha">
           <p>{{e.partido.fecha}} {{e.partido.horario}}</p>

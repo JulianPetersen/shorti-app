@@ -34,5 +34,16 @@ ion-content{
                 margin:10px;
             }
         }
+        .dataUser{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            ion-item{
+                width: 80%;
+                margin:10px;
+                
+            }
+        }
     }
 }

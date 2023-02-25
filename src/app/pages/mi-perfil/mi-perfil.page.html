@@ -1,0 +1,48 @@
+<ion-header>
+  <div class="toolbar">
+    <ion-back-button></ion-back-button>
+    <ion-title>{{nombreUser}}</ion-title>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="contenedor">
+    <ion-card class="balance">
+      <h4>Balance</h4>
+      <div class="infoUser">
+        <p>Dinero Disponible: ${{dineroObtenido}}</p>
+        <p>Créditos: {{puntosObtenidos}}</p>
+      </div>
+  </ion-card>
+
+  <ion-card class="balance" *ngIf="retirosByUser.length == 0">
+    <h4>Tus Retiros</h4>
+    <div class="infoUser">
+      <p>Aún no realizaste retiros de dinero</p>
+    </div>
+  </ion-card>
+
+  <ion-card class="retiros" *ngIf="retirosByUser.length != 0">
+    <h4>Tus Retiros</h4>
+    <div class="retiroList" *ngFor="let retiros of retirosByUser">
+      <p>fecha: {{retiros.fecha}}</p>
+      <p>monto: {{retiros.monto}}</p>
+      <p>nombre: {{retiros.nombre}}</p>
+      <p>Apellido: {{retiros.apellido}}</p>
+      <p>Cbu: {{retiros.cbu}}</p>
+      <p>Alias: {{retiros.alias}}</p>
+      <p>Estado: {{retiros.estado}}</p>
+    </div>
+  </ion-card>
+
+  <div class="lista">
+    <ion-list>
+      <ion-item (click)="logOut()">
+        <ion-icon name="power"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</div>
+</ion-content>

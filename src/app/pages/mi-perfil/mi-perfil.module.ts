@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { HeaderComponent } from './header/header.component';
-import { RouterModule } from '@angular/router';
 
+import { MiPerfilPageRoutingModule } from './mi-perfil-routing.module';
 
+import { MiPerfilPage } from './mi-perfil.page';
 
 @NgModule({
-  declarations: [
-    HeaderComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule
-
+    MiPerfilPageRoutingModule
   ],
-  exports:[
-    HeaderComponent
-  ]
+  declarations: [MiPerfilPage]
 })
-export class ComponentsModule { }
+export class MiPerfilPageModule {}

@@ -12,6 +12,28 @@
         <ion-label position="floating">Ingrese la cantidad</ion-label>
         <ion-input placeholder="Cantidad" [(ngModel)]="dineroRetirar"></ion-input>
       </ion-item>
+      <div class="dataUser" *ngIf="dineroRetirar != 0">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input placeholder="Cantidad" [(ngModel)]="nombreUser"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input placeholder="Cantidad" [(ngModel)]="apellidoUser"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Cbu</ion-label>
+          <ion-input placeholder="Cantidad" [(ngModel)]="cbuUser"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Alias</ion-label>
+          <ion-input placeholder="Cantidad" [(ngModel)]="aliasUser"></ion-input>
+        </ion-item>
+        <ion-item>
+          <p>INFORACION IMPORTANTE: el Alias o Cbu ingresado, debe estar registrado al mismo nombre que los datos que se ingresan en este formulario. de ser de otra manera, la transferencia no se realizara.</p>
+        </ion-item>
+      </div>
+      
 
       <ion-button (click)="retirarSaldo()">Solicitar Retiro</ion-button>
     </ion-card>
