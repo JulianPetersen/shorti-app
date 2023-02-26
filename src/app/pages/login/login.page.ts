@@ -55,8 +55,10 @@ export class LoginPage implements OnInit {
           }),
           error:((err) => {
             console.log(err)
-            this.global.dismissLoader();})
-          
+            this.global.dismissLoader();
+            this.global.presentAlert('Error', err.error.message)
+          })
+            
         })
         
       

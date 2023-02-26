@@ -66,7 +66,11 @@ export class Tab1Page {
 
   sumarEquipo1(equipo:any){
     console.log(equipo)
+    if(equipo.resultado.equipo1 == -1){
+      equipo.resultado.equipo1 == 0
+    }
     equipo.resultado.equipo1 += 1
+
   }
 
   sumarEquipo2(equipo:any){
@@ -75,10 +79,16 @@ export class Tab1Page {
 
   restarEquipo1(equipo:any){
     equipo.resultado.equipo1 -= 1
+    if(equipo.resultado.equipo1 == -1){
+      equipo.resultado.equipo1 = 0
+    }
   }
 
   restarEquipo2(equipo:any){
     equipo.resultado.equipo2 -= 1
+    if(equipo.resultado.equipo2 == -1){
+      equipo.resultado.equipo2 = 0
+    }
   }
 
   enviarPronostico(Partido:any){

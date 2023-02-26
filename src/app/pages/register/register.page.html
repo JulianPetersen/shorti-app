@@ -2,8 +2,8 @@
 <ion-content>
   <div class="contenedor">
     <div class="header">
-      <img class="logo" src="/assets/logo.png" alt="">
-    
+      <img class="logo" src="/assets/shorti-logo.png" alt="">
+      <h3>Shorti</h3>
     </div>
     <ion-card class="form">
       <h2 class="fuente titulo">Bienvenidos</h2>
@@ -14,15 +14,15 @@
       </ion-item>
       <ion-item class="input">
         <ion-label position="floating"  >Mail</ion-label>
-        <ion-input placeholder="Usuario" [(ngModel)]="usuario.email"></ion-input>
+        <ion-input placeholder="Email" [(ngModel)]="usuario.email"></ion-input>
       </ion-item>
       <ion-item class="input">
         <ion-label position="floating"  >Constraseña</ion-label>
-        <ion-input placeholder="Usuario" type="password" [(ngModel)]="usuario.password"></ion-input>
+        <ion-input placeholder="Contraseña" type="password" [(ngModel)]="usuario.password"></ion-input>
       </ion-item>
       <ion-item class="input">
         <ion-label position="floating"  >Repetir contraseña</ion-label>
-        <ion-input placeholder="Contraseña" type="password" [(ngModel)]="checkPassword"></ion-input>
+        <ion-input placeholder="Repita Contraseña" type="password" [(ngModel)]="checkPassword"></ion-input>
       </ion-item>
         <ion-button (click)="register()">Registrarse</ion-button>
     </ion-card>

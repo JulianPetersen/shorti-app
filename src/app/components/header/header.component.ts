@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   valorPremio:number;
   fechaPremio:string;
   
-  puntosObtenidosUser:number;
+  puntosObtenidosUser:number = 0;
 
   constructor(
               private premio:PremiosService,
