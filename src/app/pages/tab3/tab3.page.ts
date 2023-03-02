@@ -30,11 +30,14 @@ export class Tab3Page {
               private sorteRealizado:SorteosRealizadosService) {}
 
   ngOnInit(){
+    this.getUltimoSorteo()
+  }
+
+  ionViewWillEnter(){
     this.global.showLoading('cargando')
     this.obtenerDatosusuario();
     this.getInfoPremio();
     this.global.dismissLoader();
-    this.getUltimoSorteo()
     
   }
 
@@ -59,6 +62,9 @@ export class Tab3Page {
             this.global.presentAlert('Confirmación', 'Puntos Agregados con éxito')
             this.obtenerDatosusuario()
             this.getInfoPremio();
+          }),
+          error: ((err) => {
+            this.global.presentAlert('Error', err.error.message)
           })
       })
     } 

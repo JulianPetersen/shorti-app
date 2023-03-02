@@ -13,9 +13,9 @@ export class GlobalService {
               
 
 
-  // URL:string = "http://localhost:4000/api"
+  URL:string = "http://localhost:4000/api"
   //prod
-  URL:string = "https://shorti.store/api"
+  // URL:string = "https://shorti.store/api"
   puntosUser:number;
   
 

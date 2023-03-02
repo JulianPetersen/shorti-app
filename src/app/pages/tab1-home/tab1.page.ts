@@ -29,10 +29,17 @@ export class Tab1Page {
   
   user = localStorage.getItem('userId');
   
-  ngOnInit(){
+  // ngOnInit(){
+  //   this.getPartidosByUser()
+  //   this.getPartidos();
+  //   this.getlastTenPartidos()
+  // }
+
+  ionViewWillEnter(){
     this.getPartidosByUser()
     this.getPartidos();
     this.getlastTenPartidos()
+
   }
 
 
@@ -120,6 +127,8 @@ export class Tab1Page {
   handleRefresh(event:any) {
     setTimeout(() => {
       this.getPartidosByUser()
+      this.getPartidos();
+      this.getlastTenPartidos()
       event.target.complete();
     }, 2000);
   };

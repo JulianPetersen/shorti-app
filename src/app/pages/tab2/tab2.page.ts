@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { Pronosticos } from 'src/app/models/pronosticos';
 import { GlobalService } from 'src/app/services/global.service';
 import { InfouserService } from 'src/app/services/infouser.service';
@@ -18,17 +19,21 @@ export class Tab2Page {
               private global:GlobalService,
               private infouser:InfouserService) {}
 
-
+  @ViewChild(HeaderComponent) header: HeaderComponent;
   pronosticosByUser:any[] = []
   pronosticosSinChequear:any[]=[]
+  pronosticoUpdated:any;
+  actualizarPuntos:any;
 
-  ngOnInit(){
+
+  ngOnInit(){}
+
+  ionViewWillEnter(){
     this.global.showLoading('cargando')
     this.getPronosticosByUser();
     this.obtenerPartidosSinChequear()
     this.calcularPuntos();
     this.global.dismissLoader();
-    
   }
 
   user = localStorage.getItem('userId')
@@ -85,26 +90,64 @@ export class Tab2Page {
         let prediccionEquipo2 = pronostico.prediccion.equipo2
         let resultadoEquipo1 = pronostico.partido.resultado.equipo1
         let resultadoEquipo2 = pronostico.partido.resultado.equipo2
+        debugger
         if(prediccionEquipo1 == resultadoEquipo1 && prediccionEquipo2 == resultadoEquipo2){
-          let pronosticoUpdated:any = {
+          this.pronosticoUpdated = {
             puntosObtenidos : 3
           }
-          let actualizarPuntos ={
+          this.actualizarPuntos ={
             puntosObtenidos: 3
           }
-          console.log(pronosticoUpdated)
-          this.updatePronostico(pronostico._id,pronosticoUpdated)
-          this.updateCreditos(this.user, actualizarPuntos)
+          console.log(this.pronosticoUpdated)
+          this.updatePronostico(pronostico._id,this.pronosticoUpdated)
+          this.updateCreditos(this.user, this.actualizarPuntos)
           console.log('puntosActualizados')
-        }else {
-          console.log(pronostico._id)
+         }
+
+        if (prediccionEquipo1 != resultadoEquipo1 || prediccionEquipo2 != resultadoEquipo2){
+          console.log('no acierta resultado')
+          if(resultadoEquipo1 == resultadoEquipo2 && prediccionEquipo1 == prediccionEquipo2){
+            console.log('empate acertado')
+            this.pronosticoUpdated = {
+              puntosObtenidos : 1
+            }
+            this.actualizarPuntos ={
+              puntosObtenidos: 1
+            }
+            this.updatePronostico(pronostico._id,this.pronosticoUpdated)
+            this.updateCreditos(this.user, this.actualizarPuntos)
+            console.log('puntosActualizados')
+          }else if(prediccionEquipo1 < prediccionEquipo2 && resultadoEquipo1 < resultadoEquipo2){
+            console.log('ganador equipo2 acertado')
+            this.pronosticoUpdated = {
+              puntosObtenidos : 1
+            }
+            this.actualizarPuntos ={
+              puntosObtenidos: 1
+            }
+              this.updatePronostico(pronostico._id,this.pronosticoUpdated)
+              this.updateCreditos(this.user, this.actualizarPuntos)
+              console.log('puntosActualizados')
+          }else if(prediccionEquipo1 > prediccionEquipo2 && resultadoEquipo1 > resultadoEquipo2){
+            console.log('ganador equipo1 acertado')
+            this.pronosticoUpdated = {
+              puntosObtenidos : 1
+            }
+            this.actualizarPuntos ={
+              puntosObtenidos: 1
+            }
+            this.updatePronostico(pronostico._id,this.pronosticoUpdated)
+            this.updateCreditos(this.user, this.actualizarPuntos)
+            console.log('puntosActualizados')
+          }else{
+            console.log(pronostico._id)
           let pronosticoUpdated:Pronosticos = {
             puntosObtenidos : 0
           }
           console.log(pronosticoUpdated)
           this.updatePronostico(pronostico._id,pronosticoUpdated)
+          }
         }
-
       }
     }, 3000);
     

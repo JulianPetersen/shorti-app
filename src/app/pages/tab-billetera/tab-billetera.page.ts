@@ -24,9 +24,11 @@ export class TabBilleteraPage implements OnInit {
   aliasUser:string
 
   ngOnInit() {
-    this.getInfoUser();
   }
 
+  ionViewWillEnter(){
+    this.getInfoUser();
+  }
 
   getInfoUser(){
     this.infouser.getinfoUserByUserId(this.user)
