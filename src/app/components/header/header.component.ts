@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output} from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { InfouserService } from 'src/app/services/infouser.service';
 import { PremiosService } from 'src/app/services/premios.service';
+import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-header',
@@ -19,9 +20,12 @@ export class HeaderComponent implements OnInit {
   
   puntosObtenidosUser:number = 0;
 
-  constructor(
-              private premio:PremiosService,
+  constructor(private premio:PremiosService,
               private infouser:InfouserService) { }
+
+
+
+    @Input () puntosUser:number
 
   ngOnInit() {
     this.getPremios()

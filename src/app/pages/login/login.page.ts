@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { GlobalService } from 'src/app/services/global.service';
@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
               public router:Router,
               public infoUser:InfouserService,
               private loader:LoadingController,
+              private alert:AlertController
               ) { }
 
   
@@ -27,6 +28,7 @@ export class LoginPage implements OnInit {
     password:"",
   };
 
+  emailUser:string;
 
   ngOnInit() {
   }
@@ -76,5 +78,46 @@ export class LoginPage implements OnInit {
       return false
     }
     return true
+  }
+
+  async recoveryPassword(){
+    const alert = await this.alert.create({
+      header: 'Recupera tu Email',
+      message: 'Ingresa tu Email, en caso de ser correcto, enviaremos las instrucciones para recuperar tu contraseña.',
+      inputs: [
+        {
+          name:'email',
+          placeholder: 'Email',
+
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: (alertData) => {
+           let body = {
+            email:this.emailUser
+            }
+           this.emailUser = alertData.email
+           this.infoUser.recoveryPassword(body)
+            .subscribe({
+              next: ((res:any) =>{
+                console.log(res)
+              })
+            })
+          },
+        },
+      ],
+    })
+  
+    alert.present();
+     
   }
 }

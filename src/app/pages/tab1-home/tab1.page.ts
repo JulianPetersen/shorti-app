@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { InfoUser } from 'src/app/models/info-user';
 import { Pronosticos } from 'src/app/models/pronosticos';
 import { GlobalService } from 'src/app/services/global.service';
@@ -17,7 +18,8 @@ export class Tab1Page {
   constructor(public partidos:PartidosService,
               private pronosticos:PronosticosService,
               public global:GlobalService,
-              public loader:LoadingController) {}
+              public loader:LoadingController,
+              public infouser:InfouserService) {}
 
 
   partidosObtained:any = [];
@@ -26,20 +28,30 @@ export class Tab1Page {
   equipo2Goles:number = 0;
   ultimosPartiodos:any[] = []
   lastPartidosJugados:any[] = []
+  puntosUser:number;
   
   user = localStorage.getItem('userId');
+  @ViewChild(HeaderComponent) header: any;
   
-  // ngOnInit(){
-  //   this.getPartidosByUser()
-  //   this.getPartidos();
-  //   this.getlastTenPartidos()
-  // }
-
-  ionViewWillEnter(){
+  ngOnInit(){
+    
     this.getPartidosByUser()
     this.getPartidos();
     this.getlastTenPartidos()
+  }
+  
+  ionViewWillEnter(){
+    this.infoUser();
+  }
 
+  infoUser(){
+    this.infouser.getinfoUserByUserId(this.user)
+      .subscribe({
+        next: ((res:any) => {
+          console.log('infouser',res)
+          this.puntosUser = res[0].puntosObtenidos
+        })
+      })
   }
 
 
@@ -126,9 +138,7 @@ export class Tab1Page {
   
   handleRefresh(event:any) {
     setTimeout(() => {
-      this.getPartidosByUser()
-      this.getPartidos();
-      this.getlastTenPartidos()
+      this.ngOnInit();
       event.target.complete();
     }, 2000);
   };

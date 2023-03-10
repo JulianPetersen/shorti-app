@@ -1,10 +1,15 @@
 <ion-header>
-  <app-header ></app-header>
+  <app-header #header [puntosUser]="puntosUser"></app-header>
 </ion-header>
 
+
+
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" (ionRefresh)="header.getInfouser()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="billetera">
-    <ion-card>  
+    <ion-card>
       <h2>Tu dinero Obtenido</h2>
       <p>Tienes disponible para retirar</p>
       <p>${{dineroUsuario}}</p>
@@ -30,10 +35,11 @@
           <ion-input placeholder="Cantidad" [(ngModel)]="aliasUser"></ion-input>
         </ion-item>
         <ion-item>
-          <p>INFORACION IMPORTANTE: el Alias o Cbu ingresado, debe estar registrado al mismo nombre que los datos que se ingresan en este formulario. de ser de otra manera, la transferencia no se realizara.</p>
+          <p>INFORACION IMPORTANTE: el Alias o Cbu ingresado, debe estar registrado al mismo nombre que los datos que se
+            ingresan en este formulario. de ser de otra manera, la transferencia no se realizara.</p>
         </ion-item>
       </div>
-      
+
 
       <ion-button (click)="retirarSaldo()">Solicitar Retiro</ion-button>
     </ion-card>

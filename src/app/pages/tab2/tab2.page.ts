@@ -14,21 +14,21 @@ import { PronosticosService } from 'src/app/services/pronosticos.service';
 })
 export class Tab2Page {
 
+  @ViewChild(HeaderComponent) header: any;
+
   constructor(private pronostico:PronosticosService ,
               public loader:LoadingController,
               private global:GlobalService,
               private infouser:InfouserService) {}
 
-  @ViewChild(HeaderComponent) header: HeaderComponent;
+  
   pronosticosByUser:any[] = []
   pronosticosSinChequear:any[]=[]
   pronosticoUpdated:any;
   actualizarPuntos:any;
+  puntosUser:number;
 
-
-  ngOnInit(){}
-
-  ionViewWillEnter(){
+  ngOnInit(){
     this.global.showLoading('cargando')
     this.getPronosticosByUser();
     this.obtenerPartidosSinChequear()
@@ -36,10 +36,23 @@ export class Tab2Page {
     this.global.dismissLoader();
   }
 
-  user = localStorage.getItem('userId')
+  ionViewWillEnter(){
+    this.infoUser();
+  }
 
+  infoUser(){
+    this.infouser.getinfoUserByUserId(this.user)
+      .subscribe({
+        next: ((res:any) => {
+          console.log('infouser',res)
+          this.puntosUser = res[0].puntosObtenidos
+        })
+      })
+  }
+
+
+  user = localStorage.getItem('userId')
   getPronosticosByUser(){
- 
     this.pronostico.getPronosticosByUser(this.user)
       .subscribe({
         next:((res:any[]) => {
@@ -90,7 +103,6 @@ export class Tab2Page {
         let prediccionEquipo2 = pronostico.prediccion.equipo2
         let resultadoEquipo1 = pronostico.partido.resultado.equipo1
         let resultadoEquipo2 = pronostico.partido.resultado.equipo2
-        debugger
         if(prediccionEquipo1 == resultadoEquipo1 && prediccionEquipo2 == resultadoEquipo2){
           this.pronosticoUpdated = {
             puntosObtenidos : 3
@@ -155,7 +167,7 @@ export class Tab2Page {
 
   handleRefresh(event:any) {
     setTimeout(() => {
-      this.getPronosticosByUser()
+      this.ngOnInit();
       event.target.complete();
     }, 2000);
   };

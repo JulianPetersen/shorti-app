@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { Retiros } from 'src/app/models/retiros';
 import { AuthService } from 'src/app/services/auth.service';
 import { BilleteraService } from 'src/app/services/billetera.service';
@@ -13,7 +14,8 @@ export class MiPerfilPage implements OnInit {
 
   constructor(private infouser:InfouserService, 
               private auth:AuthService,
-              private billetera:BilleteraService) { }
+              private billetera:BilleteraService,
+              private alert:AlertController) { }
 
   user = localStorage.getItem('userId')
   userData:any
@@ -54,5 +56,60 @@ export class MiPerfilPage implements OnInit {
 
   logOut(){
     this.auth.logOut()
+  }
+  
+
+  async changePassword(){
+    const alert = await this.alert.create({
+      header: 'Cambia de contraseña',
+      message: 'Si necesitas cabiar tu constraseña, completa el formulario. Debes recordar tu contraseña actual',
+      inputs: [
+        {
+          name:'oldPassword',
+          placeholder: 'Contraseña anterior',
+          type:'password'
+        },
+        {
+          name:'newPass',
+          placeholder: 'Nueva Contraseña',
+          type:'password'
+        },
+        {
+          name:'repeatNewPass',
+          placeholder: 'Repita la nueva contraseña',
+          type:'password'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: (alertData) => {
+            let body = {
+              id: this.user,
+              password: alertData.oldPassword,
+              newPassword: alertData.newPass
+            }
+            this.infouser.changePassword(body)
+              .subscribe({
+                next: ((res) => {
+                  console.log(res)
+                }),
+                error: (err) => {
+                  console.log(err)
+                }
+              })
+          },
+        },
+      ],
+    })
+  
+    alert.present();
   }
 }

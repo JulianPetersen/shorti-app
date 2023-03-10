@@ -44,4 +44,7 @@ export class GlobalService {
       this.loadingCtrl.dismiss();
     }, 3000);
   }
+
+
+
 }

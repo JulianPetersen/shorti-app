@@ -1,10 +1,21 @@
 <ion-header [translucent]="true">
-  <app-header></app-header>
+  <app-header #header [puntosUser]="puntosUser"></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-refresher slot="fixed" 
+(ionRefresh)="handleRefresh($event)"
+(ionRefresh)="header.getInfouser()">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+<ion-content [fullscreen]="true" >
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" (ionRefresh)="header.getInfouser()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="contenedor">
-    <div class="ultimoGanador" >
+    <div class="ultimoGanador">
       <ion-card *ngIf="ultimoSorteo.length != 0">
         <h5>Ulimo Ganador</h5>
         <p>{{ultimoGanador}}</p>
@@ -13,7 +24,8 @@
       </ion-card>
       <ion-card>
         <h5>¿Como Participar?</h5>
-        <p>Cada Crédito que sumes, vale por una chance en el sorteo, cuantos más créditos uses, más chances tendrás de ganarlo.</p>
+        <p>Cada Crédito que sumes, vale por una chance en el sorteo, cuantos más créditos uses, más chances tendrás de
+          ganarlo.</p>
         <p>Tienes: {{puntosUsuarios}} Créditos</p>
         <ion-item>
           <ion-label position="floating">Agregar Créditos</ion-label>
@@ -21,6 +33,7 @@
         </ion-item>
         <ion-button (click)="agregarCreditos()">Agregar</ion-button>
       </ion-card>
+
 
       <ion-card>
         <h5>sorteo</h5>

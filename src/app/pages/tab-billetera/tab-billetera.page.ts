@@ -22,13 +22,16 @@ export class TabBilleteraPage implements OnInit {
   apellidoUser:string;
   cbuUser:string;
   aliasUser:string
+  puntosUser:number;
+
 
   ngOnInit() {
-  }
-
-  ionViewWillEnter(){
     this.getInfoUser();
   }
+ionViewWillEnter(){
+    this.infoUser();
+  }
+ 
 
   getInfoUser(){
     this.infouser.getinfoUserByUserId(this.user)
@@ -106,4 +109,21 @@ export class TabBilleteraPage implements OnInit {
     }
     return true
   }
+
+  infoUser(){
+    this.infouser.getinfoUserByUserId(this.user)
+      .subscribe({
+        next: ((res:any) => {
+          console.log('infouser',res)
+          this.puntosUser = res[0].puntosObtenidos
+        })
+      })
+  }
+
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
+  };
 }

@@ -1,10 +1,12 @@
 
   <ion-header>
-    <app-header ></app-header>
+    <app-header #header [puntosUser]="puntosUser"></app-header>
   </ion-header>
 <ion-content [fullscreen]="true">
 
-  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="handleRefresh($event)"
+  (ionRefresh)="header.getInfouser()">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 

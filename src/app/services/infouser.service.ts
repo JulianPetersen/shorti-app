@@ -27,4 +27,17 @@ export class InfouserService {
     })
     return this.http.put(`${this.global.URL}/infouser/${id}`,body,{headers:headers})
   }
+
+  recoveryPassword(body:any){
+   
+    return this.http.post(`${this.global.URL}/users/recoverypassword`,body)
+  }
+
+  changePassword(body:any){
+    let token:any = localStorage.getItem('token')
+    let headers = new HttpHeaders({
+      'x-access-token':token
+    })
+    return this.http.post(`${this.global.URL}/users/changepassword`,body,{headers:headers})
+  }
 }

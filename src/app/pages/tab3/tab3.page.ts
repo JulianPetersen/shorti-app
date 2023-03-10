@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { GlobalService } from 'src/app/services/global.service';
 import { InfouserService } from 'src/app/services/infouser.service';
 import { PremiosService } from 'src/app/services/premios.service';
@@ -23,23 +25,40 @@ export class Tab3Page {
   porcentajeEnSorteo:number;
   ultimoGanador:string;
   cantidadUltimoGanador:string
+  puntosUser:number;
+  @ViewChild(HeaderComponent) header: any;
+
+
 
   constructor(private premio:PremiosService, 
               private infouser:InfouserService,
               private global:GlobalService,
               private sorteRealizado:SorteosRealizadosService) {}
 
-  ngOnInit(){
-    this.getUltimoSorteo()
-  }
+              
 
-  ionViewWillEnter(){
+  ngOnInit(){
     this.global.showLoading('cargando')
+    this.getUltimoSorteo()
     this.obtenerDatosusuario();
     this.getInfoPremio();
     this.global.dismissLoader();
-    
   }
+
+  ionViewWillEnter(){
+    this.infoUser();
+  }
+  
+  infoUser(){
+    this.infouser.getinfoUserByUserId(this.user)
+      .subscribe({
+        next: ((res:any) => {
+          console.log('infouser',res)
+          this.puntosUser = res[0].puntosObtenidos
+        })
+      })
+  }
+
 
   obtenerDatosusuario(){
     this.infouser.getinfoUserByUserId(this.user)
@@ -51,6 +70,7 @@ export class Tab3Page {
   }
 
   agregarCreditos(){
+    
     if(this.validarCheckout()){
       let updatePremio = {
         cantParticipaciones:this.creditos,
@@ -59,9 +79,11 @@ export class Tab3Page {
       this.premio.updatePremioByUser(updatePremio)
         .subscribe({
           next: ((res) => {
+            
             this.global.presentAlert('Confirmación', 'Puntos Agregados con éxito')
             this.obtenerDatosusuario()
             this.getInfoPremio();
+            this.infoUser();
           }),
           error: ((err) => {
             this.global.presentAlert('Error', err.error.message)
@@ -80,6 +102,14 @@ export class Tab3Page {
       this.global.presentAlert('Error', 'No puedes dejar este campo vacio')
       return false
     }
+    if(Math.sign(this.creditos) == -1){
+      this.global.presentAlert('Error','Numero ingresado es invalido')
+      return false
+    }
+    if(this.creditos % 1 != 0){
+      this.global.presentAlert('Error', 'Por favor ingrese un nuero entero')
+      return false
+    }
     return true
   }
 
@@ -87,6 +117,7 @@ export class Tab3Page {
     this.premio.getPremios()
       .subscribe({
         next:((res:any) => {
+          this.participacionesPorusuario = []
           this.participantesDePremio = res[0].participantes
           this.participantesDePremio.map((participanteId:any) => {
             if(participanteId == this.user){
@@ -109,6 +140,8 @@ export class Tab3Page {
     this.porcentajeEnSorteo =Math.round(((this.cantParticipacionUsuario * 100)/ this.participacionesTotales)) ;
     console.log('porcentajeParticipacion', this.porcentajeEnSorteo)
   }
+
+  
   ultimoSorteo:any[] = []
   getUltimoSorteo(){
     this.sorteRealizado.getUltimoSorteo()
@@ -127,4 +160,12 @@ export class Tab3Page {
         })
       })
   }
+
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
+  };
+
 }
