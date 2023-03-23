@@ -10,7 +10,7 @@ import { InfouserService } from './services/infouser.service';
 })
 export class AppComponent {
 
-  constructor(public global:GlobalService){
+  constructor(){
     
   }
 }

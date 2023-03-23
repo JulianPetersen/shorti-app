@@ -64,14 +64,13 @@ export class Tab2Page {
   }
 
   obtenerPartidosSinChequear(){
-    setTimeout(() => {
+      this.pronosticosSinChequear = []
       for(let pronostico of this.pronosticosByUser){
         if(pronostico.puntosObtenidos == null && pronostico.partido.estado === 'Finalizado'){
           this.pronosticosSinChequear.push(pronostico)
-  
         }
       }
-    }, 2000);
+    
     
   }
 
@@ -96,8 +95,6 @@ export class Tab2Page {
   }
 
   calcularPuntos(){
-    setTimeout(() => {
-
       for(let pronostico of this.pronosticosSinChequear){
         let prediccionEquipo1 = pronostico.prediccion.equipo1
         let prediccionEquipo2 = pronostico.prediccion.equipo2
@@ -161,8 +158,6 @@ export class Tab2Page {
           }
         }
       }
-    }, 3000);
-    
   }
 
   handleRefresh(event:any) {
