@@ -1,0 +1,25 @@
+<ion-header>
+  
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notificaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor">
+    <ion-card *ngFor="let not of alllocalNotifications"
+              (click)="readNotifications(not._id)">
+      <div class="cardContainer">
+        <ion-card-title>{{not.title}}</ion-card-title>
+        <ion-card-content>{{not.messagge}}</ion-card-content>
+      </div>
+      <div class="notificationPoint">
+        <div class="point" *ngIf="not.user.indexOf(this.user) == -1"></div>
+      </div>
+    </ion-card>
+  </div>
+  
+</ion-content>

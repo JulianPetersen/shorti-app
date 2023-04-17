@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'slide-inicial',
     loadChildren: () => import('./pages/slide-inicial/slide-inicial.module').then( m => m.SlideInicialPageModule)
   },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -16,6 +16,13 @@
       <ion-label>Premios</ion-label>
     </ion-tab-button>
 
+    <ion-tab-button (click)="goNotifications()">
+       <ion-item class="item">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge color="primary" *ngIf="cantoNotification != 0">{{cantoNotification}}</ion-badge>
+      </ion-item>
+    </ion-tab-button>
+
     <ion-tab-button (click)="openMenu()">
       <ion-icon name="menu-outline"></ion-icon>
       <ion-label>Más</ion-label>
